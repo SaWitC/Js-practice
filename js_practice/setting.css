@@ -1,0 +1,58 @@
+.bg-blue{
+	background-color:#BF9630;
+}
+
+.bg-dark{
+	background-color: #091E35;
+}
+.h-div{
+	width:auto;%;
+	height:auto;
+	min-height:40px;
+	border: 10px solid #FFB600;
+	border-radius:20px;
+}
+
+.centerd{
+	text-align:center;
+}
+
+.btn{
+	border:5px solid;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	background-color:#62B1D0;
+}
+.border-darkblue{
+	border-color:#0776A0;
+}
+
+.data-div{
+	border: 5px solid #555;
+	border-radius: 20px;
+	margin: 5px;
+	width:45%;
+	min-height:20px;
+	float: left;
+	background-color:#fff;
+}
+.text-white{
+	color: #CBD5DF;
+}
+
+.quests-div{
+	margin: 5px;
+	background-color:#024C68;
+	min-height:20px;
+	border: 5px solid #3AA6D0;
+	border-radius:20px;
+}
+.d-flex{
+	display: flex;
+	justify-content:center;
+}
+.w-100{
+	width: 100%
+}
+
+
