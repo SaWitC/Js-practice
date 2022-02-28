@@ -1,0 +1,20 @@
+function quest1_1(){
+	try
+	{
+		var arr =[];
+	
+		document.getElementById("requirement").innerHTML='<p>функция принимает масив целых чисел выводит true если все числа четные</p><br> Числа в массиве <input id="arr1q1" type="text" value="1,2,3,4"/>'
+
+		b =document.getElementById("arr1q1")
+		a=d.split(",");
+		for(x in a)
+		{
+			arr.push(parseInt(x));
+		}
+	}
+	catch{
+		
+	}
+
+	alert(arr.forEach());
+}

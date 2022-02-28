@@ -80,6 +80,7 @@ function quest4()
 	}
 	catch
 	{
+		document.getElementById("result").innerHTML="введите и отправьте данные";
 		var requirement='Генерирует число в заданом диопазоне и выводит лелится ли число на 2 с остатком или нет';
 		requirement+=`<br>от <input id="v1q4" type="number" value="5"/> <br>до <input id="v2q4" type="number" value="6"/><br>parseInt <input id=piq4 type="checkbox"><button class="btn border-darkblue" onclick="quest4()">submit</button>`
 		document.getElementById("requirement").innerHTML=requirement;
@@ -106,8 +107,85 @@ function quest5()
 	}
 	catch
 	{
+		document.getElementById("result").innerHTML="введите и отправьте данные";
 		alert("bad");
 		document.getElementById("requirement").innerHTML='между всеми словами в строке поставить символ , <br><input id="strq5" value="your     test text" /><br> <button onclick="quest5()">submit</button>';
 	}
 	
+}
+
+//lvl2===============================================================================document
+
+function quest2_1(){
+	var result;
+	try
+	{
+		var arr =[];
+		b =document.getElementById("arr1q1").value
+		b+=',';
+		var splits = b.split(',');
+		for(var i=0;i!=splits.length-1;i++)
+		{
+			arr.push(parseInt(splits[i]));
+		}
+
+		var x1 =arr.length;
+		alert("done");
+		var coolArr =arr.filter(elem => elem% 2 == 0);
+		if(coolArr.length==arr.length)result =`true ${coolArr.length} = ${arr.length}`
+		else result =`false ${coolArr.length} != ${arr.length}`
+		document.getElementById("result").innerHTML=result;
+	outputData(``,`${result}`,"requirement","result");
+		
+	}
+	catch{
+		outputData(`'<p>функция принимает массив целых чисел выводит true если все числа четные Ввдите числа в формате число,число,число</p><br> Числа в массиве <input id="arr1q1" type="text" value="1,2,3,4"/> <button class="btn border-darkblue " onclick="quest1_1()">submit</button>'`,``,"requirement","result");
+	}
+
+	//alert(arr.forEach());
+}
+
+function quest2_2()
+{
+	var arr1=[1,2,3,4]
+	var arr2=['abc','def','yfyy']
+	var arr3 =[];
+	//document.getElementById("requirement").innerHTML=
+	arr3=[...arr1,...arr2];
+	//document.getElementById("result").innerHTML=
+	outputData(`<p class="left-T"><h3>оператор spread</h3><br>Операции с масивами<br>arr1=[1,2,3,4]<br>arr2=['abc','def','yfyy']<br>arr3 =[]<br><p>`,`arr3[...arr1,...arr2]  итог ${arr3}`,"requirement","result");
+}
+
+function outputData(requirementstr,resultstr,requirementHTML_Id,resultHTML_Id){
+	document.getElementById(requirementHTML_Id).innerHTML=requirementstr;
+	document.getElementById(resultHTML_Id).innerHTML=resultstr;
+
+}
+function quest2_3(arr=[1,2,3,4,5,21.4]){
+	var sum=0;
+	arr.forEach(e=>sum+=e)
+	var res = sum/arr.length;
+	res=Math.floor(res*100)/100;
+	outputData(`функция высчитывает среднее арифметическое массива и округляет вплоть до 2 знаков после запятой<br> массив по умолчанию[${arr}]`,`sum= ${sum}<br>average of numbers ${sum/arr.length}<br>result ${res}`,"requirement","result");
+}
+
+//lvl3====================================================================================
+
+function quest3_1()
+{
+	let el=
+	{
+		nick:12000,
+		rick:34500,
+		nika:23423,
+		vika:23432
+	};
+	var str=""
+	alert(el);
+	var sum=0;
+	for(var x in el){
+		sum+=el[x];
+		str+=`name: ${x} value: ${el[x]}<br>`
+	}
+	outputData(`функция перебирающая и слаживающая знчения всех свойств объекта (свойства представляют собой имена сотрудников значение свойств его зп) <br>объект<br>${str}`,`sum =${sum}`,"requirement","result");
 }
