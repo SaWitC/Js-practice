@@ -189,3 +189,178 @@ function quest3_1()
 	}
 	outputData(`функция перебирающая и слаживающая знчения всех свойств объекта (свойства представляют собой имена сотрудников значение свойств его зп) <br>объект<br>${str}`,`sum =${sum}`,"requirement","result");
 }
+
+function quest3_2(){
+	let obj={
+		valueInt:45,
+		valueInt2:4250,
+		valuestr:"fsdfsdf",
+		valuestr2:'s'
+	};
+	var st="";
+	var st2="";
+
+	for(var x in obj){
+		st+=`${x} = ${obj[x]} <br>`
+		if((typeof(obj[x])==typeof(1))||typeof(obj[x])==typeof(1.0)){
+			obj[x] =parseInt(obj[x])*2;	
+		}
+		else{
+		}
+		st2+=`${x} = ${obj[x]} <br>`
+	}
+	outputData(`функция которая умнажает на 2 все числовые свойства объекта<br>начальный объект<br>${st}`,`Результат <br> ${st2}`,"requirement","result");
+}
+
+// function quest3_3(pos){
+// 	if(pos==undefined){
+// 		pos=0;
+// 	}
+// 	try{
+// 		document.getElementById("pos").value=pos;
+// 		let obj={
+// 			valueInt:45,
+// 			valueInt2:4250,
+// 			valuestr:"fsdfsdf",
+// 			valuestr2:'s'
+// 		};
+// 		//var mi=1;
+// 		//var ma =1;
+// 		if(pos=0){
+// 			alert("выбран самый верхний элемент")
+// 			ma=0
+// 		}
+// 		if(pos>=obj.length){
+// 			mi=0
+// 			alert("выбран самый нижний элемент")
+// 		}
+// 	}
+// 	catch{	
+// 		outputData(`<input id="pos" value="${pos}"/> <button onclick="quest3_3(${pos+1})">up</button><br><button onclick="quest3_3(${pos-1})">down</button>`,`"обновите"`,"requirement","result");
+// 	}
+// }
+
+
+
+function quest3_3(pos){
+	if(pos==undefined){
+		pos=0;
+	}
+	var res;
+	var l=0;
+	let obj={
+		valueInt:45,
+		valueInt2:4250,
+		valuestr:"fsdfsdf",
+		valuestr2:'s'
+		};
+	try{
+		for(var x in obj)
+		{
+			l++;
+			if(l==pos){
+				res=`${x} ${obj[x]}`;
+			}
+		}
+		for(var x in obj){
+
+		}
+		if(pos<=0){
+			alert("выбран самый нижний элемент");
+			pos=0;
+		}
+		if(pos>=l){
+			alert("выбран самый верхний элемент");
+			pos=l;	
+		}
+	document.getElementById("pos").value=pos;
+	}
+	catch{}	
+	outputData(`функция позволяющая просматривать свойства объекта перемещатся вверх или вниз<br><input id="pos" value="${pos}"/> <input type="submit" onclick="quest3_3(${pos+1})" value="up"/><br><button onclick="quest3_3(${pos-1})">down</button>`,`${res}`,"requirement","result");
+}
+//lvl4//////////////////////////////////////////////////////////////
+
+function quest4_1(symbol){
+	document.getElementById("requirement").innerHTML="Сделать калькулятор";
+
+	document.getElementById("result").innerHTML=
+	`<div ><input id="display" style="display:" type="text"/></div>`+
+	`<div style="display:"><button class="btn btn-calcul" onclick="number(1)">1</button><button class="btn btn-calcul" onclick="number(2)">2</button><button class="btn btn-calcul" onclick="number(3)">3</button><button class="btn btn-calcul" onclick="sumbol('+')">+</button></div>`+
+	`<div style="display:"><button class="btn btn-calcul" onclick="number(4)">4</button><button class="btn btn-calcul" onclick="number(5)">5</button><button class="btn btn-calcul" onclick="number(6)">6</button><button class="btn btn-calcul" onclick="sumbol('-')">-</button></div>`+
+	`<div style="display:"><button class="btn btn-calcul" onclick="number(7)">7</button><button class="btn btn-calcul" onclick="number(8)">8</button><button class="btn btn-calcul" onclick="number(9)">9</button><button class="btn btn-calcul" onclick="sumbol('/')">/</button></div>`+
+	`<div style="display:"><button class="btn btn-calcul" onclick="number(0)">0</button><button class="btn btn-calcul" onclick="symbol(.)">,</button><button class="btn btn-calcul" onclick="enter()">=</button><button class="btn btn-calcul" onclick="sumbol('*')">*</button></div>`+
+	`<div><button class="btn btn-calcul" onclick="clearf(1)"><-</button><button class="btn btn-calcul" onclick="clearf(2)"><-</button></div>`
+}
+
+function number(num){
+	document.getElementById("display").value+=num
+}
+function sumbol(s){
+	var text=document.getElementById("display").value;
+	if(text[text.length-1]!=s && text[text.length-1].match(/\d/)){
+		document.getElementById("display").value+=s
+	}
+}
+function enter() {
+	var t =document.getElementById("display").value
+	var res=eval(t);
+	var t =document.getElementById("display").value=res;
+}
+
+function clearf(elem) {
+	var t =document.getElementById("display").value
+	
+	if(elem==1&& t.length!=0){
+	var x =t.length-1;
+	t.length=x;
+		document.getElementById("display").value=t.slice(0, -1)
+	}
+	else{
+		document.getElementById("display").value="";	
+	}
+}
+
+//midle ============================================================================
+function quest1_2_1() {
+	try{
+		document.getElementById("result").innerHTML="";
+		var btn =document.getElementById("clickbtn");
+		btn.addEventListener("click",()=>alert("Function1"));
+		btn.addEventListener("click",()=>alert("function2"));
+		alert("Done");
+	}
+	catch{
+		document.getElementById("requirement").innerHTML=`Использование слушателей событий js <br>подключить функции<button onclick="quest1_2_1()">click</button><br><button id="clickbtn">click me</button>`;
+	}
+}
+
+function lock_link(e){
+	var x =document.getElementById("rb1").checked;
+	var x2 =document.getElementById("rb2").checked;
+	if(x==true)
+	{
+		alert("Запрещено");
+	}
+	if((x==false&& x2==false)||x2==false){
+		 e.preventDefault();
+	}
+}
+
+function quest1_2_2(e) {
+	try{
+		var el=document.getElementById("link1");
+		el.addEventListener("click",lock_link);
+	}
+	catch{
+		document.getElementById("requirement").innerHTML=`<a id="link1" href="https://metanit.com/web/javascript/9.3.php">click me</a><input type="radio" id="rb1" name="Cstatus"/>Запретить переход<br><input type="radio" id="rb2" name="Cstatus"/>Разрешить переход`;
+		quest1_2_2();
+	}
+}
+
+function quest1_2_3() {
+	//document.documentElement.style.setProperty('--main-bg-color', randomColor);
+	for(var x =0;x!=100;x++){
+		const randomColor = "#"+((1<<24)*Math.random()|0).toString(16); 
+		document.getElementById("result").innerHTML+=`<div style="display:inline "><button class=" fleft btn-calcul "></button></div>`;
+	}
+}

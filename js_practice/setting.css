@@ -78,3 +78,18 @@ body{
 	height: auto;
 }
 
+
+/*==============================*/
+
+.btn-calcul{
+	width:40px;
+	height:40px;
+	font-size: 22px;
+	margin:0px;
+}
+.btn:hover{
+	background-color:aqua;
+	transition: 0.5s;
+}
+
+
