@@ -357,10 +357,159 @@ function quest1_2_2(e) {
 	}
 }
 
-function quest1_2_3() {
-	//document.documentElement.style.setProperty('--main-bg-color', randomColor);
-	for(var x =0;x!=100;x++){
-		const randomColor = "#"+((1<<24)*Math.random()|0).toString(16); 
-		document.getElementById("result").innerHTML+=`<div style="display:inline "><button class=" fleft btn-calcul "></button></div>`;
+function editdata(e){
+	var name=document.sf.ninp.value;
+	var age =document.sf.ainp;
+	if(age.value<=0||name==""){
+		alert("введите данные корректно.");
+		e.preventDefault();
 	}
+	else{
+		alert("данные отправлены");
+	}
+
+}
+
+function quest1_2_3() {
+	try{
+		var x=document.sf.nsubm1;
+		x.addEventListener("click",editdata);
+	}
+	catch{
+		
+		outputData(`Словить данные отправленне и формой и как ли их изменить<br><form name="sf">Name<input type="text" name="ninp" placeholder="name"/>Age<input name="ainp" type="number" placeholder="20"/>  <input type="submit" name="nsubm1" value="submit"/></form>`,``,"requirement","result");
+		quest1_2_3();
+	}
+}
+
+function quest1_2_4() {
+	var user={
+		age:18,
+		name:"nick",
+		sex:"male"
+	};
+	var jsonobj =JSON.stringify(user);
+
+	outputData(`Сериализовать объект и затем десиреализовать обратно`,`Сериализванный объект<br> ${jsonobj}<br>Десириализованный объект<br>${JSON.parse(jsonobj)}`,"requirement","result");
+}
+
+function quest1_2_5(){
+	try{
+		var x =document.getElementByClassName("btnev")
+		// for(i in x){
+		// 	i.addEventListener("click"click);
+		// }
+		outputData(`обраьотать нажатие одним и тем же образом для нескольких кнопок<br><a class="btnev"href="#" >button1</a><br><a class="btnev" href="#">button2</a>`,"","requirement","result");
+	}
+	catch{
+
+	}
+}
+
+function click(){
+	alert("done");
+}
+
+//2_2_1//
+function sumP(v1,v2)
+{
+	return mPromise =new Promise(function(resolve,reject)
+	{
+		resolve(v1+v2);
+	})
+}
+
+function quest2_2_1()
+{
+	try
+	{
+		var v1 =document.getElementById("v1").value;
+		var v2=document.getElementById("v2").value
+		sumP(v1,v2).then(function(val){alert(`sum =${val}`);document.getElementById("result").value=val});
+	}
+	catch
+	{
+		outputData(`строки которые будут сканкатенированы<br><input type="text" id="v1" ><br><input type="text" id="v2" > <button class="btn border-darkblue" onclick="quest2_2_1()">get result</button>`," ","requirement","result");
+	}
+}
+
+function quest2_2_2(){
+	outputData("демонстрация работы Promise получение данных с сервера","все данные в консоли","requirement","result");
+	const promise =new Promise(function(resolve,reject){
+		var data= "crete data"
+		resolve(data);
+	})
+	.then(data=>{console.log(data); data="data2😶😶"; return data })
+	.then(data=>{console.log(data);data="only text"})
+	.then(data=>{return data/0})
+	.catch()
+	.then(data=>{console.log(data)})
+	.finally(data=>{console.log(`finaly ${data}`)});
+	console.log("click1");
+	console.log("click2");
+	console.log("click3");
+	alert("all data in console");
+}
+///////////////////////////
+function quest3_2_1(){
+	var json
+	sendJsonRequest("Get","https://jsonplaceholder.typicode.com/users").then(data=>{json =data});
+	outputData("получение данных json с сервера https://jsonplaceholder.typicode.com/users",`<h3>полученый json в консоли</h3>`,"requirement","result");
+}
+
+
+function sendJsonRequest(method,url){
+	return new Promise(function(resolve,reject){
+		const xhr =new XMLHttpRequest();
+		xhr.open(method,url);
+
+		xhr.onload=()=>{
+			if(xhr.status==200){
+				console.log(xhr.responseText);
+				resolve(xhr.responseText);
+			}
+			else{
+				aler("No data Recived");
+			}
+		}
+		xhr.send();
+	})
+}
+
+function IsJsonString(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
+
+function sendJsonRequest(url,jsonData){
+	if(IsJsonString(jsonData)){
+		return new Promise(function(resolve,reject){
+			const xhr =new XMLHttpRequest();
+			xhr.open("POST",url);
+			xhr.onload=()=>{
+				if(xhr.status>=200&&xhr.status<300){
+					alert("data sended");
+				}
+			}
+			resolve(jsonData);
+			xhr.send(jsonData);
+		});
+	}
+	else{
+		console.log(`Format exception ${typeof(jsonData)}`);
+	}
+}
+///////////////////////////
+
+function quest3_2_2(){
+	var jsonObj={
+		name:"nick",
+		age:14,
+	}
+	sendJsonRequest("https://jsonplaceholder.typicode.com/users",JSON.stringify(jsonObj)).then(data=>console.log(data));
+	outputData("отправка данных json",`<h3></h3>`,"requirement","result");
 }
