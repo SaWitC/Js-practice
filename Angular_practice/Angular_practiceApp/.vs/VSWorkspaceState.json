@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\core",
+    "\\src\\app\\core\\Components",
+    "\\src\\app\\core\\Components\\navbar",
+    "\\src\\app\\core\\core"
+  ],
+  "SelectedNode": "\\angular.json",
+  "PreviewInSolutionExplorer": false
+}
