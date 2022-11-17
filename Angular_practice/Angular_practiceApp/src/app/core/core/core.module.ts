@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../Components/navbar/navbar.component';
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
+import { RxJsModule } from '../Components/RxJs/rx-js.module';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
 
 
 
@@ -13,8 +15,11 @@ import { MatIconModule } from '@angular/material/icon'
   imports: [
     CommonModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    RxJsModule
   ],
-  exports:[NavbarComponent]
+  //schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [NavbarComponent, MatButtonModule],
+  providers: []
 })
 export class CoreModule { }

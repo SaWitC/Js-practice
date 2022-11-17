@@ -1,8 +1,54 @@
+<div class="row">
+  <h3 class="text-center text-white">CODE</h3>
+  <div class="col-3"></div>
+  <div class="col-6 text-center" style="background-color: #6741d9;border-radius:10px">
+    <label class="text-white">{{codeString}}</label>
+  </div>
+  <div class="col-3"></div>
+
+</div>
+
+
+
+<div class="row">
+  <div class="col"><hr class="solid-white"></div>
+  <div class="col-auto text-white"><h2>Base</h2></div>
+  <div class="col"><hr class="solid-white"></div>
+</div>
+
 <button mat-stroked-button color="accent" (click)="rxObservable()">rxjs Observable</button>
 <button mat-flat-button color="accent" (click)="rxObserver()">rxjs Observer</button>
-<button mat-button color="warn" (click)="rxOf()">rx Of</button>
 <button mat-raised-button color="primary" (click)="rxSubscribtion()">rx subscribtion</button>
 <button mat-icon-button color="accent">
   <mat-icon>shopping_cart</mat-icon>
 </button>
+<button mat-stroked-button color="accent">Pipes</button>
 
+
+<div class="row">
+  <div class="col"><hr class="solid-white"></div>
+  <div class="col-auto text-white"><h2>Hot and cold observables</h2></div>
+  <div class="col"><hr class="solid-white"></div>
+</div>
+
+<button id="coldSubbtn1" mat-stroked-button color="accent">cold sub1</button>
+<button id="coldSubbtn2" mat-stroked-button color="accent">cold sub2</button>
+<hr />
+
+<button id="hotSubbtn1" mat-button color="warn">hot sub1</button>
+<button id="hotSubbtn2" mat-button color="warn">hot sub2</button>
+
+<div class="row">
+  <div class="col"><hr class="solid-white"></div>
+  <div class="col-auto text-white"><h2>Сreation Opperators</h2></div>
+  <div class="col"><hr class="solid-white"></div>
+</div>
+
+<app-creation-operators></app-creation-operators>
+
+<button mat-button color="warn">FromEvent</button>
+<button mat-button color="warn">From</button>
+<button mat-button color="warn">Interval</button>
+
+
+<!--<button mat-stroked-button (click)="rxOperators($event)" [hidden]="hiden5" color="accent">Opperators</button>-->
