@@ -19,7 +19,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
     RxJsModule
   ],
   //schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports: [NavbarComponent, MatButtonModule],
+  exports: [NavbarComponent],
   providers: []
 })
 export class CoreModule { }

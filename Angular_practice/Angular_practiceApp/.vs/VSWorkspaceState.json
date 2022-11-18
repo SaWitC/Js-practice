@@ -8,8 +8,9 @@
     "\\src\\app\\core\\Components\\navbar",
     "\\src\\app\\core\\Components\\RxJs",
     "\\src\\app\\core\\Components\\RxJs\\creation-operators",
+    "\\src\\app\\core\\Components\\RxJs\\transformation-operators",
     "\\src\\app\\core\\core"
   ],
-  "SelectedNode": "\\src\\app\\core\\core\\core.module.ts",
+  "SelectedNode": "\\src\\app\\core\\Components\\RxJs\\transformation-operators\\transformation-operators.component.ts",
   "PreviewInSolutionExplorer": false
 }

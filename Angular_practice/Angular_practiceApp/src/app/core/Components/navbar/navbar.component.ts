@@ -24,6 +24,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     return [1,2,3,4];
   }
 
+ng 
+
   public observ = new Observable((subscriber) => {
     subscriber.next(this.foo());
     subscriber.next(this.foo());
@@ -88,10 +90,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-    //fromEvent(document, "click").pipe(
-    //  auditTime(2000),//this method block all method after previus click
-    //  scan((click) => click + 1, 0))
-    //  .subscribe(res => { console.log(`document are clicked ${res}`) })
+    fromEvent(document, "click").pipe(
+      auditTime(2000),//this method block all method after previus click
+      scan((click) => click + 1, 0))
+      .subscribe(res => { console.log(`document are clicked ${res}`) })
   }
 
   //region 5
@@ -99,10 +101,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   rxOperators(even: any) {
     this.hiden5 = true;
     console.log(even);
-    const observer$ = from([1, 2, 3, 4, 5]).pipe(scan((acc: any, val) => acc.concat(val), [])).subscribe(
-      (res: any) => { this.toastr.info(res.toString(), "info"); },
-      (err) => { this.toastr.error(err) },
-      () => { setTimeout(() => { console.log(111); this.toastr.success("complete"); this.hiden5 = false; }, 2000); });
+   
   }
 
   //endregion5
@@ -138,10 +137,4 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     });
   }
 
-
-
-
-
-
-  //endregion
 }

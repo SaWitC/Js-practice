@@ -1,7 +1,9 @@
-<button (click)="rxOf()" mat-button color="warn">Of</button>
-<button (click)="rxOf2()" mat-button color="warn">Of</button>
+<button class="m-2" (click)="rxOf()" mat-raised-button color="warn">Of</button>
+<button class="m-2" (click)="rxOf2()" mat-raised-button color="warn">Of</button>
 
-<button (click)="rxFromEvent($event)" mat-stroked-button color="accent">subscribe to the checkbox </button>
-<button (click)="rxFromEventUnsubscribe()" mat-stroked-button color="accent">unsubscribe to the checkbox </button>
+<button class="m-2" mat-raised-button color="primary" (click)="rxIntervalSubscribe()">Interval subscribe</button>
+<button class="m-2" mat-raised-button color="primary" (click)="rxIntervalUnsubscribe()">Interval unsubscribe</button>
 
-<input type="checkbox" id="checkBox1" />
+<button class="m-2" mat-raised-button color="warn" (click)="rxFrom1()">From</button>
+<button class="m-2" mat-raised-button color="warn" (click)="rxFrom2()">From</button>
+
