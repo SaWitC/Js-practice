@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, Output } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs/internal/observable/of';
 import { concatAll, fromEvent, from, interval, observable, scan, map } from 'rxjs';
@@ -16,12 +16,12 @@ export class CreationOperatorsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Output()
-  public codeString:string;
+  @Output() onMsgClicked = new EventEmitter<any>();
+
 
   rxOf() {
     this.toastr.clear();
-    this.codeString = 'of("hello", "world", "hd").pipe(concatAll())';
+    this.onMsgClicked.emit( 'of("hello", "world", "hd").pipe(concatAll())');
 
     of("hello", "world", "hd")
       .pipe(concatAll())
@@ -31,18 +31,8 @@ export class CreationOperatorsComponent implements OnInit {
 
     of(1, 2, 3).subscribe(res => this.toastr.info(res.toString(), "Result"), null, () => this.toastr.success("complete"));
 
-    this.codeString = '"of(1, 2, 3)"'
+    this.onMsgClicked.emit('"of(1, 2, 3)"');
   }
-  ///fromEvent
-  //public isCheckedFromEvent: boolean;
-  //fromEvent1 = fromEvent(document, "click").subscribe(res => { console.log(res); })
-  //rxFromEvent(event: any) {
-
-  //  //const checkbox = document.getElementById("checkBox1");
-  //  this.fromEvent1
-
-  //}
-
 
   observer = {
     next: x => this.toastr.info(`observer got a next value ${x}`),
@@ -70,6 +60,7 @@ export class CreationOperatorsComponent implements OnInit {
   }
 
   rxFrom1() {
+    this.onMsgClicked.emit('from([1, 2, 3, 4, 5]).pipe(scan((acc: any, val) => acc.concat(val), []))')
     const observer$ = from([1, 2, 3, 4, 5]).pipe(scan((acc: any, val) => acc.concat(val), [])).subscribe(
       (res: any) => { this.toastr.info(res.toString(), "info"); },
       (err) => { this.toastr.error(err) },
@@ -77,6 +68,7 @@ export class CreationOperatorsComponent implements OnInit {
   }
 
   rxFrom2() {
+    this.onMsgClicked.emit(' from(["hello", "world"]).pipe(concatAll())')
     const observer$ = from(["hello", "world"]).pipe(concatAll()).subscribe(
      x => this.toastr.info(`observer got a next value ${x}`),
       err => this.toastr.error(`observer got a next exception ${err}`),

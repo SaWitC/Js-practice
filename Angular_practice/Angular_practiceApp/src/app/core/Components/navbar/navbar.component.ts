@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { fromEvent, auditTime, from, scan, Observable, Subscriber, Subscription, map, of, concatAll, delay, interval, filter, pipe, observable } from 'rxjs'
-import { audit, buffer, debounceTime, share } from "rxjs/operators"
+import { audit, buffer, debounceTime, publish, share, shareReplay } from "rxjs/operators"
 
 
 
@@ -75,6 +75,9 @@ ng
   }
 
 
+  public setMessage(message: any): void {
+    this.codeString = message;
+  }
 
 
 
@@ -135,6 +138,20 @@ ng
     document.getElementById("hotSubbtn2")?.addEventListener("click", () => {
       const sub2 = this.HotObservable.subscribe((x: any) => this.toastr.info(x))
     });
+
+    document.getElementById("hotSubbtn1withShareReplay")?.addEventListener("click", () => {
+      const sub2 = this.HotObservable2.subscribe((x: any) => this.toastr.info(x))
+    });
+
+    document.getElementById("hotSubbtn2withShareReplay")?.addEventListener("click", () => {
+      const sub2 = this.HotObservable2.subscribe((x: any) => this.toastr.info(x))
+    });
   }
+
+
+  HotObservable2 = Observable.create((observer: any) => {
+    observer.next("first hot");
+  }).pipe(shareReplay())
+
 
 }

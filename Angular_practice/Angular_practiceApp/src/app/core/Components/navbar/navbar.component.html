@@ -35,8 +35,11 @@
 <button id="coldSubbtn2" mat-stroked-button color="accent">cold sub2</button>
 <hr />
 
-<button id="hotSubbtn1" mat-button color="warn">hot sub1</button>
-<button id="hotSubbtn2" mat-button color="warn">hot sub2</button>
+<button id="hotSubbtn1" mat-button color="warn">hot sub1 with use share</button>
+<button id="hotSubbtn2" mat-button color="warn">hot sub2 with use share</button>
+
+<button id="hotSubbtn1withShareReplay" mat-button color="warn">hot sub1 with use shareReplay</button>
+<button id="hotSubbtn2withShareReplay" mat-button color="warn">hot sub2 with use shareReplay</button>
 
 <div class="row">
   <div class="col"><hr class="solid-white"></div>
@@ -44,7 +47,7 @@
   <div class="col"><hr class="solid-white"></div>
 </div>
 
-<app-creation-operators></app-creation-operators>
+<app-creation-operators (onMsgClicked)="setMessage($event)"></app-creation-operators>
 
 <div class="row">
   <div class="col"><hr class="solid-white"></div>
@@ -52,6 +55,6 @@
   <div class="col"><hr class="solid-white"></div>
 </div>
 
-<app-transformation-operators></app-transformation-operators>
+<app-transformation-operators (onMsgClicked)="setMessage($event)"></app-transformation-operators>
 
 <!--<button mat-stroked-button (click)="rxOperators($event)" [hidden]="hiden5" color="accent">Opperators</button>-->
