@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   /*schemas: [CUSTOM_ELEMENTS_SCHEMA],*/
@@ -13,6 +16,14 @@ import { ToastrModule } from 'ngx-toastr';
     AppComponent,
   ],
   imports: [
+    //TranslateModule.forRoot({
+    //  loader: {
+    //    provide: TranslateLoader,
+    //    useFactory: HttpLoaderFactory,
+    //    deps: [HttpClient],
+    //  },
+    //  useDefaultLang: false,
+    //}),
     CoreModule,
     BrowserModule,
     AppRoutingModule,
@@ -25,3 +36,6 @@ import { ToastrModule } from 'ngx-toastr';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+

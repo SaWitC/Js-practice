@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { fromEvent, auditTime, from, scan, Observable, Subscriber, Subscription, map, of, concatAll, delay, interval, filter, pipe, observable } from 'rxjs'
 import { audit, buffer, debounceTime, publish, share, shareReplay } from "rxjs/operators"
+import { environment } from '../../../../environments/environment';
 
 
 
@@ -16,7 +18,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   codeString = "";
 
-  constructor(private toastr:ToastrService) { }
+  selectedLanguage: string;
+  languages: { id: string, title: string }[] = [];
+
+  constructor(private toastr: ToastrService, private translateService: TranslateService) {
+  }
   /// region1 used Observable
   
   public foo() {
@@ -79,8 +85,6 @@ ng
     this.codeString = message;
   }
 
-
-
   //region 4 subscription
   rxSubscribtion() {
     var observable2 = interval(1000);
@@ -91,8 +95,32 @@ ng
   }
   //endregion 4
 
+  changeLocale() {
+    this.translateService.use(this.selectedLanguage)
+  }
+
 
   ngOnInit(): void {
+
+    // initialize translate service
+    this.translateService.use(environment.defaultLocale);
+    this.selectedLanguage = environment.defaultLocale;
+    console.log(this.selectedLanguage);
+
+    this.translateService.get(environment.locales.map(x => `LANGUAGES.${x.toUpperCase()}`))
+      .subscribe(translations => {
+        // init dropdown list with TRANSLATED list of languages from config
+        this.languages = environment.locales.map(x => {
+          return {
+            id: x,
+            title: translations[`LANGUAGES.${x.toUpperCase()}`],
+          };
+        });
+      });
+    console.log("localisation complete");
+
+
+
     fromEvent(document, "click").pipe(
       auditTime(2000),//this method block all method after previus click
       scan((click) => click + 1, 0))

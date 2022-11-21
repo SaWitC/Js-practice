@@ -6,9 +6,10 @@
     "\\src\\app\\core",
     "\\src\\app\\core\\Components",
     "\\src\\app\\core\\Components\\navbar",
-    "\\src\\app\\core\\Components\\RxJs\\creation-operators",
-    "\\src\\app\\core\\Components\\RxJs\\transformation-operators",
-    "\\src\\app\\core\\core"
+    "\\src\\app\\core\\core",
+    "\\src\\assets",
+    "\\src\\assets\\locales",
+    "\\src\\environments"
   ],
   "SelectedNode": "\\src\\app\\core\\Components\\navbar\\navbar.component.ts",
   "PreviewInSolutionExplorer": false
