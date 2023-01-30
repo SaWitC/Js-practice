@@ -1,0 +1,29 @@
+$mycolor1:#b75b00;
+$mycolor2:#2000d3;
+$mycolor3:#00c4c4;
+$mycolor4:#016276;
+$mycolor5:#003b52;
+
+
+
+.btn{
+    background-color:$mycolor4;
+    border-radius:5px;
+    border: solid 3px;
+    border-color:$mycolor5;
+}
+
+body{
+    background-color: $mycolor4;
+    display:flex;
+}
+
+.quests{
+    &-div{
+        background-color: $mycolor3;
+        width: 20%;
+        &-title{
+            background-color: #2000d3;
+        }
+    }
+}

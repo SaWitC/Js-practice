@@ -1,0 +1,64 @@
+.loader {
+  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+  width: auto;
+  height: auto;
+}
+.loader:span {
+  transition: 3s;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin: 1px;
+  background-color: #00a413;
+  border: 1px solid #025b2d;
+}
+.loader:nth-child(1) {
+  -webkit-animation-delay: 0.15s;
+          animation-delay: 0.15s;
+  -webkit-animation: animations-e1 10s ease-in-out infinite;
+          animation: animations-e1 10s ease-in-out infinite;
+}
+.loader:nth-child(2) {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  -webkit-animation: animations-e2 10s ease-in-out infinite;
+          animation: animations-e2 10s ease-in-out infinite;
+}
+.loader:nth-child(3) {
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
+  -webkit-animation: animations-e3 10s ease-in-out infinite;
+          animation: animations-e3 10s ease-in-out infinite;
+}
+.loader:nth-child(4) {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+  -webkit-animation: animations-e4 10s ease-in-out infinite;
+          animation: animations-e4 10s ease-in-out infinite;
+}
+
+body {
+  background-color: rgb(60, 146, 149);
+}
+
+@-webkit-keyframes animations-e1 {
+  10% {
+    transform: scaleY(5);
+  }
+  80% {
+    transform: scaleY(-5);
+  }
+}
+
+@keyframes animations-e1 {
+  10% {
+    transform: scaleY(5);
+  }
+  80% {
+    transform: scaleY(-5);
+  }
+}/*# sourceMappingURL=settings.css.map */

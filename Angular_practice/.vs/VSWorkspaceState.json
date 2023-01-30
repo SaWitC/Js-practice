@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Angular_practiceApp",
+    "\\Angular_practiceApp\\src",
+    "\\Angular_practiceApp\\src\\app",
+    "\\Angular_practiceApp\\src\\app\\core",
+    "\\Angular_practiceApp\\src\\app\\core\\Components",
+    "\\Angular_practiceApp\\src\\app\\core\\Components\\RxJs",
+    "\\Angular_practiceApp\\src\\app\\core\\Components\\RxJs\\creation-operators"
+  ],
+  "SelectedNode": "\\Angular_practiceApp\\src\\app\\app-routing.module.ts",
+  "PreviewInSolutionExplorer": false
+}

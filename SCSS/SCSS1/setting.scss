@@ -1,0 +1,200 @@
+
+//base colors
+
+$my-text-color:#fff;
+$my-background-color:#222222;
+$my-placeholder-color:#ddd;
+$my-border-color:#025b2d;
+
+//base numerical variables
+$base-button-width:100px;
+
+
+$my-global-text-required:" *";
+
+body{
+	background-color:$my-background-color;
+	padding: auto;
+
+	background-image: url(https://i.pinimg.com/736x/16/51/a7/1651a7e049cf443edc1cffe560600e0f.jpg);
+	background-size: cover;
+}
+
+button{
+	transition: 1s;
+	background-color:#011309;
+	border: solid $my-border-color 2px;
+	padding:4px;
+	color:$my-text-color;
+	width: $base-button-width;
+
+	&:hover{
+		transition: 1s;
+		padding: 6px;
+	}
+}
+
+.center{
+	margin: auto;
+}
+
+.main{
+	z-index:2;
+	margin-top: 10rem;
+	text-align: center;
+	background-color: #141414;
+	background-image: url(https://i.pinimg.com/736x/03/ee/b5/03eeb545bc291d48b906bd50df9e77c8--into-the-wild.jpg);
+	background-size: cover;
+	width:14rem;
+	border: 4px #002914 solid;
+	border-radius: 1rem;
+	padding: 10px;
+}
+
+.form{
+
+	&-label{
+		color: $my-text-color;
+		&:after{
+			content: $my-global-text-required;
+		}
+	}
+
+	&-input{
+		width: 90%;
+		margin-top: 10px;
+		padding:4px;
+		padding-left:8px;
+		transition:1s;
+		background-color:#303030;
+		color:$my-text-color;
+		
+	
+		&:hover{
+			background-color: #008510;	
+		}
+	
+		&:focus{
+			transition: 1s;
+			padding: 6px;
+			border-color: #00a413;
+		}
+	}
+
+	&-control{
+		outline: none;
+		margin: 5px;
+		border:solid 2px $my-border-color;
+		border-radius:5px;
+	}
+	::placeholder{
+		content:$my-global-text-required;
+		font-size: 15px;
+		&:hover{	
+				
+			background-color: #000040;
+		}
+	}
+}
+.loader{
+
+	display:flex;
+	margin:0;
+	
+	position:absolute;
+	height:300px;
+	width:90%;
+	transform:translate(-50% -50%);
+	//justify-content:center;
+	align-items:center;
+	animation:animations3 10s ease-in-out infinite;
+
+	@for $i from 1 to 5 {
+
+		span{
+
+			transition: 3s;
+			display:block;
+			width:10px;
+			height:10px;
+			border-radius:5px;
+			margin:1px;
+			background-color:#00a413;
+			border: 1px solid #025b2d;
+			&:hover{
+				transition: 0.2s;
+				background-color: #ebbd02;
+			}
+
+			&:nth-child(#{$i}){
+				animation-delay:.15s*$i;
+				animation:animations-e+$i 10s ease-in-out infinite;
+			}
+		}
+	 }
+
+	}
+/*---------------------------------------------------*/
+// .loader span:nth-child(5){
+// 	animation-delay:.60s;
+// 	transform:translateX(-100px);
+// 	background-color:#fff;
+// 	animation:animations2 10s ease-in-out infinite;
+// }
+
+
+@for $i from 1 to 5 {
+	@keyframes animations-e#{$i}{
+		10%{transform: scaleY(5*$i);}
+		80%{transform: scaleY(-5*$i);}
+	}
+}
+
+
+
+// @keyframes animations-e1
+// {
+// 	10%{transform: scaleY(5);}
+// 	80%{transform: scaleY(-5);}
+// }
+
+// @keyframes animations-e2
+// {
+// 	10%{transform: scaleY(10);}
+// 	80%{transform: scaleY(-10);}
+// }
+// @keyframes animations-e3
+// {
+// 	10%{transform: scaleY(7);}
+// 	80%{transform: scaleY(-7);}
+// }
+// @keyframes animations-e4
+// {
+// 	10%{transform: scaleY(5);}
+// 	80%{transform: scaleY(-5);}
+// }
+
+// @keyframes animations-e5
+// {
+// 	10%{transform: scaleY(5);}
+// 	80%{transform: scaleY(-5);}
+// }
+
+
+@keyframes animations2{
+	20%{transform:translateX(+50px);}
+	30%{transform: scaleX(2);}
+	80%{transform:translateX(-50px);}
+}
+
+@keyframes animations3{
+	10%{transform:rotate(120deg)}
+	20%{transform:rotate(240deg)}
+	40%{transform:rotate(360deg)}
+	50%{transform:rotate(480deg)}
+	60%{transform:rotate(360)}
+	70%{transform:rotate(240deg)}
+	80%{transform:rotate(120deg)}
+	90%{transform:rotate(60deg)}
+	100%{transform:rotate(0deg)}
+}

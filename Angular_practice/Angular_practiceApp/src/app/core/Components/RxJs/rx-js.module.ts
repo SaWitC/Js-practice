@@ -10,7 +10,7 @@ import { TransformationOperatorsComponent } from './transformation-operators/tra
 @NgModule({
   declarations: [
     CreationOperatorsComponent,
-    TransformationOperatorsComponent
+    TransformationOperatorsComponent,
   ],
   ///*//schemas: [CUSTOM_ELEMENTS_SCHEMA],*/
   imports: [
@@ -19,7 +19,7 @@ import { TransformationOperatorsComponent } from './transformation-operators/tra
   ],
   exports: [
     CreationOperatorsComponent,
-    TransformationOperatorsComponent
+    TransformationOperatorsComponent,
     //MatButtonModule
   ]
   

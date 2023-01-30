@@ -1,0 +1,325 @@
+body {
+  background-color: #222222;
+  padding: auto;
+  background-image: url(https://i.pinimg.com/736x/16/51/a7/1651a7e049cf443edc1cffe560600e0f.jpg);
+  background-size: cover;
+}
+
+button {
+  transition: 1s;
+  background-color: #011309;
+  border: solid #025b2d 2px;
+  padding: 4px;
+  color: #fff;
+  width: 100px;
+}
+button:hover {
+  transition: 1s;
+  padding: 6px;
+}
+
+.center {
+  margin: auto;
+}
+
+.main {
+  z-index: 2;
+  margin-top: 10rem;
+  text-align: center;
+  background-color: #141414;
+  background-image: url(https://i.pinimg.com/736x/03/ee/b5/03eeb545bc291d48b906bd50df9e77c8--into-the-wild.jpg);
+  background-size: cover;
+  width: 14rem;
+  border: 4px #002914 solid;
+  border-radius: 1rem;
+  padding: 10px;
+}
+
+.form-label {
+  color: #fff;
+}
+.form-label:after {
+  content: " *";
+}
+.form-input {
+  width: 90%;
+  margin-top: 10px;
+  padding: 4px;
+  padding-left: 8px;
+  transition: 1s;
+  background-color: #303030;
+  color: #fff;
+}
+.form-input:hover {
+  background-color: #008510;
+}
+.form-input:focus {
+  transition: 1s;
+  padding: 6px;
+  border-color: #00a413;
+}
+.form-control {
+  outline: none;
+  margin: 5px;
+  border: solid 2px #025b2d;
+  border-radius: 5px;
+}
+.form ::-moz-placeholder {
+  content: " *";
+  font-size: 15px;
+}
+.form :-ms-input-placeholder {
+  content: " *";
+  font-size: 15px;
+}
+.form ::placeholder {
+  content: " *";
+  font-size: 15px;
+}
+.form ::-moz-placeholder:hover {
+  background-color: #000040;
+}
+.form :-ms-input-placeholder:hover {
+  background-color: #000040;
+}
+.form ::placeholder:hover {
+  background-color: #000040;
+}
+
+.loader {
+  display: flex;
+  margin: 0;
+  position: absolute;
+  height: 300px;
+  width: 90%;
+  transform: translate(-50% -50%);
+  align-items: center;
+  -webkit-animation: animations3 10s ease-in-out infinite;
+          animation: animations3 10s ease-in-out infinite;
+}
+.loader span {
+  transition: 3s;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin: 1px;
+  background-color: #00a413;
+  border: 1px solid #025b2d;
+}
+.loader span:hover {
+  transition: 0.2s;
+  background-color: #ebbd02;
+}
+.loader span:nth-child(1) {
+  -webkit-animation-delay: 0.15s;
+          animation-delay: 0.15s;
+  -webkit-animation: animations-e1 10s ease-in-out infinite;
+          animation: animations-e1 10s ease-in-out infinite;
+}
+.loader span {
+  transition: 3s;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin: 1px;
+  background-color: #00a413;
+  border: 1px solid #025b2d;
+}
+.loader span:hover {
+  transition: 0.2s;
+  background-color: #ebbd02;
+}
+.loader span:nth-child(2) {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  -webkit-animation: animations-e2 10s ease-in-out infinite;
+          animation: animations-e2 10s ease-in-out infinite;
+}
+.loader span {
+  transition: 3s;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin: 1px;
+  background-color: #00a413;
+  border: 1px solid #025b2d;
+}
+.loader span:hover {
+  transition: 0.2s;
+  background-color: #ebbd02;
+}
+.loader span:nth-child(3) {
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
+  -webkit-animation: animations-e3 10s ease-in-out infinite;
+          animation: animations-e3 10s ease-in-out infinite;
+}
+.loader span {
+  transition: 3s;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin: 1px;
+  background-color: #00a413;
+  border: 1px solid #025b2d;
+}
+.loader span:hover {
+  transition: 0.2s;
+  background-color: #ebbd02;
+}
+.loader span:nth-child(4) {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+  -webkit-animation: animations-e4 10s ease-in-out infinite;
+          animation: animations-e4 10s ease-in-out infinite;
+}
+
+/*---------------------------------------------------*/
+@-webkit-keyframes animations-e1 {
+  10% {
+    transform: scaleY(5);
+  }
+  80% {
+    transform: scaleY(-5);
+  }
+}
+@keyframes animations-e1 {
+  10% {
+    transform: scaleY(5);
+  }
+  80% {
+    transform: scaleY(-5);
+  }
+}
+@-webkit-keyframes animations-e2 {
+  10% {
+    transform: scaleY(10);
+  }
+  80% {
+    transform: scaleY(-10);
+  }
+}
+@keyframes animations-e2 {
+  10% {
+    transform: scaleY(10);
+  }
+  80% {
+    transform: scaleY(-10);
+  }
+}
+@-webkit-keyframes animations-e3 {
+  10% {
+    transform: scaleY(15);
+  }
+  80% {
+    transform: scaleY(-15);
+  }
+}
+@keyframes animations-e3 {
+  10% {
+    transform: scaleY(15);
+  }
+  80% {
+    transform: scaleY(-15);
+  }
+}
+@-webkit-keyframes animations-e4 {
+  10% {
+    transform: scaleY(20);
+  }
+  80% {
+    transform: scaleY(-20);
+  }
+}
+@keyframes animations-e4 {
+  10% {
+    transform: scaleY(20);
+  }
+  80% {
+    transform: scaleY(-20);
+  }
+}
+@-webkit-keyframes animations2 {
+  20% {
+    transform: translateX(50px);
+  }
+  30% {
+    transform: scaleX(2);
+  }
+  80% {
+    transform: translateX(-50px);
+  }
+}
+@keyframes animations2 {
+  20% {
+    transform: translateX(50px);
+  }
+  30% {
+    transform: scaleX(2);
+  }
+  80% {
+    transform: translateX(-50px);
+  }
+}
+@-webkit-keyframes animations3 {
+  10% {
+    transform: rotate(120deg);
+  }
+  20% {
+    transform: rotate(240deg);
+  }
+  40% {
+    transform: rotate(360deg);
+  }
+  50% {
+    transform: rotate(480deg);
+  }
+  60% {
+    transform: rotate(360);
+  }
+  70% {
+    transform: rotate(240deg);
+  }
+  80% {
+    transform: rotate(120deg);
+  }
+  90% {
+    transform: rotate(60deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes animations3 {
+  10% {
+    transform: rotate(120deg);
+  }
+  20% {
+    transform: rotate(240deg);
+  }
+  40% {
+    transform: rotate(360deg);
+  }
+  50% {
+    transform: rotate(480deg);
+  }
+  60% {
+    transform: rotate(360);
+  }
+  70% {
+    transform: rotate(240deg);
+  }
+  80% {
+    transform: rotate(120deg);
+  }
+  90% {
+    transform: rotate(60deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}/*# sourceMappingURL=setting.css.map */

@@ -6,11 +6,11 @@
     "\\src\\app\\core",
     "\\src\\app\\core\\Components",
     "\\src\\app\\core\\Components\\navbar",
-    "\\src\\app\\core\\core",
-    "\\src\\assets",
-    "\\src\\assets\\locales",
-    "\\src\\environments"
+    "\\src\\app\\core\\Components\\RxJs",
+    "\\src\\app\\core\\Components\\RxJs\\creation-operators",
+    "\\src\\app\\core\\Components\\RxJs\\test",
+    "\\src\\app\\core\\core"
   ],
-  "SelectedNode": "\\src\\app\\core\\Components\\navbar\\navbar.component.ts",
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }

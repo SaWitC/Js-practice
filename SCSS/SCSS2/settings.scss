@@ -1,0 +1,36 @@
+.loader{
+    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    width: auto;
+    height: auto;
+    &:span{
+        transition: 3s;
+        display:block;
+        width:10px;
+        height:10px;
+        border-radius:5px;
+        margin:1px;
+        background-color:#00a413;
+        border: 1px solid #025b2d;
+    }
+
+    @for $i from 1 to 5 {
+    &:nth-child(#{$i})
+        {
+            animation-delay:.15s*$i;
+            animation:animations-e+$i 10s ease-in-out infinite;
+        }
+    }
+}
+
+body{
+    background-color: rgb(60, 146, 149);
+}
+
+@keyframes animations-e1
+{
+	10%{transform: scaleY(5);}
+	80%{transform: scaleY(-5);}
+}

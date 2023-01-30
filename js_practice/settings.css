@@ -1,0 +1,19 @@
+.btn {
+  background-color: #016276;
+  border-radius: 5px;
+  border: solid 3px;
+  border-color: #003b52;
+}
+
+body {
+  background-color: #016276;
+  display: flex;
+}
+
+.quests-div {
+  background-color: #00c4c4;
+  width: 20%;
+}
+.quests-div-title {
+  background-color: #2000d3;
+}/*# sourceMappingURL=settings.css.map */

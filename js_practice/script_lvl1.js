@@ -257,6 +257,11 @@ function quest3_3(pos){
 	try{
 		for(var x in obj)
 		{
+			console.log(x);
+			console.log(pos);
+			console.log(l);
+
+
 			l++;
 			if(l==pos){
 				res=`${x} ${obj[x]}`;
@@ -388,6 +393,7 @@ function quest1_2_4() {
 		name:"nick",
 		sex:"male"
 	};
+	console.log(user)
 	var jsonobj =JSON.stringify(user);
 
 	outputData(`Сериализовать объект и затем десиреализовать обратно`,`Сериализванный объект<br> ${jsonobj}<br>Десириализованный объект<br>${JSON.parse(jsonobj)}`,"requirement","result");

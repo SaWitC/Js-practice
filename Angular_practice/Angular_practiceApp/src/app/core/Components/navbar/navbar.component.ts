@@ -147,6 +147,7 @@ ng
 
   HotObservable = Observable.create((observer: any) => {
     observer.next("first hot");
+
   }).pipe(share());
 
   ngAfterViewInit() {
@@ -168,18 +169,21 @@ ng
     });
 
     document.getElementById("hotSubbtn1withShareReplay")?.addEventListener("click", () => {
-      const sub2 = this.HotObservable2.subscribe((x: any) => this.toastr.info(x))
+      const sub2 = this.HotObservable2.subscribe((x: any) => this.toastr.info(x["clientX"]))
     });
 
     document.getElementById("hotSubbtn2withShareReplay")?.addEventListener("click", () => {
-      const sub2 = this.HotObservable2.subscribe((x: any) => this.toastr.info(x))
+      const sub2 = this.HotObservable2.subscribe((x: any) => this.toastr.info(x["clientX"]))
     });
   }
 
 
-  HotObservable2 = Observable.create((observer: any) => {
-    observer.next("first hot");
-  }).pipe(shareReplay())
+  //HotObservable2 = Observable.create((observer: any) => {
+  //  observer.next("first hot");
+  //}).pipe(shareReplay())
 
+
+
+  HotObservable2 = fromEvent(document, "click").pipe(shareReplay());
 
 }

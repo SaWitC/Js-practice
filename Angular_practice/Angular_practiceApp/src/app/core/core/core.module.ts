@@ -10,11 +10,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+
   ],
   imports: [
     FormsModule,
