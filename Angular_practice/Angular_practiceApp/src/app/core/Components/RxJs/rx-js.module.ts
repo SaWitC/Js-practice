@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
 import { CreationOperatorsComponent } from './creation-operators/creation-operators.component';
 import { MatButtonModule } from '@angular/material/button';
 import { TransformationOperatorsComponent } from './transformation-operators/transformation-operators.component';
+import { HotAndColdObservablesComponent } from './hot-and-cold-observables/hot-and-cold-observables.component';
+import { SubscriptionsServiceService } from '../../services/subscriptions-service.service';
+import { ToastrModule } from 'ngx-toastr';
+import { RxJsRoutingModule } from './rxjs-routing.module';
 
 
 
@@ -11,17 +14,18 @@ import { TransformationOperatorsComponent } from './transformation-operators/tra
   declarations: [
     CreationOperatorsComponent,
     TransformationOperatorsComponent,
+    HotAndColdObservablesComponent,
   ],
-  ///*//schemas: [CUSTOM_ELEMENTS_SCHEMA],*/
   imports: [
     CommonModule,
-    MatButtonModule
+    ToastrModule,
+    RxJsRoutingModule,
+    MatButtonModule,
   ],
   exports: [
     CreationOperatorsComponent,
+    HotAndColdObservablesComponent,
     TransformationOperatorsComponent,
-    //MatButtonModule
   ]
-  
 })
 export class RxJsModule { }

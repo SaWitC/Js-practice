@@ -1,20 +1,100 @@
-<button class="m-2" (click)="rxMap1()" mat-raised-button color="warn">map</button>
-<button class="m-2" (click)="rxMap2()" mat-raised-button color="warn">map</button>
+<div class="row">
+  <div class="col"><hr class="solid-white"></div>
+  <div class="col-auto text-white"><h2>Transformation Opperators</h2></div>
+  <div class="col"><hr class="solid-white"></div>
+</div>
+
+<div class="d-grid">
+
+  <div class="border m-2">
+    <div>
+      <button class="m-2" (click)="rxJsMap()" mat-raised-button color="warn">map</button>
+  </div>
+    <div class="text-white p-2">
+      simple data mapping
+      <h5>Code :</h5>
+    </div>
+    <div class="text-white">
+      <pre>
+        <code [innerHTML]="codeMap"></code>
+      </pre>
+    </div>
+  </div>
 
 
-<button class="m-2" (click)="rxMapTo1()" mat-raised-button color="warn">mapTo</button>
-<button class="m-2" (click)="rxPluck()" mat-raised-button color="warn">pluck</button>
+  <div class="border m-2">
+    <div>
+      <button class="m-2" (click)="rxJsMapTo()" mat-raised-button color="warn">mapTo</button>
+  </div>
+    <div class="text-white p-2">
+      simple data mapping
+      <h5>Code :</h5>
+    </div>
+    <div class="text-white">
+      <pre>
+        <code [innerHTML]="codeMapTo"></code>
+      </pre>
+    </div>
+  </div>
 
-<button class="m-2" (click)="rxScan()" mat-raised-button color="warn">scan</button>
-<button class="m-2" (click)="rxBuffer()" mat-raised-button color="warn">expand</button>
+  <div class="border m-2">
+    <div>
+      <button class="m-2" (click)="rxJsConcatMap()" mat-raised-button color="warn">concatMap</button>
+  </div>
+    <div class="text-white p-2">
+      Returns an Observable that emits items based on applying a function that you supply to each item emitted by the source Observable, where that function returns an (so-called "inner") Observable. Each new inner Observable is concatenated with the previous inner Observable.
+      <h5>Code :</h5>
+    </div>
+    <div class="text-white">
+      <pre>
+        <code [innerHTML]="codeConcatMap"></code>
+      </pre>
+    </div>
+  </div>
 
+  <div class="border m-2">
+    <div>
+      <button class="m-2" (click)="rxJsSwirtchMap()" mat-raised-button color="warn">switchMap</button>
+  </div>
+    <div class="text-white p-2">
+      Returns an Observable that emits items based on applying a function that you supply to each item emitted by the source Observable, where that function returns an (so-called "inner") Observable. Each new inner Observable is concatenated with the previous inner Observable.
+      <h5>Code :</h5>
+    </div>
+    <div class="text-white">
+      <pre>
+        <code [innerHTML]="codeSwitchMap"></code>
+      </pre>
+    </div>
+  </div>
 
+  <div class="border m-2">
+    <div>
+      <button class="m-2" (click)="rxJsMergeMap()" mat-raised-button color="warn">mergeMap</button>
+  </div>
+    <div class="text-white p-2">
+      Returns an Observable that emits items based on applying a function that you supply to each item emitted by the source Observable, where that function returns an (so-called "inner") Observable. Each new inner Observable is concatenated with the previous inner Observable.
+      <h5>Code :</h5>
+    </div>
+    <div class="text-white">
+      <pre>
+        <code [innerHTML]="codeMergeMap"></code>
+      </pre>
+    </div>
+  </div>
 
+  <div class="border m-2">
+    <div>
+      <button class="m-2" (click)="rxJsExaustMap()" mat-raised-button color="warn">exausthMap</button>
+  </div>
+    <div class="text-white p-2">
+      Returns an Observable that emits items based on applying a function that you supply to each item emitted by the source Observable, where that function returns an (so-called "inner") Observable. Each new inner Observable is concatenated with the previous inner Observable.
+      <h5>Code :</h5>
+    </div>
+    <div class="text-white">
+      <pre>
+        <code [innerHTML]="codeExausteMap"></code>
+      </pre>
+    </div>
+  </div>
 
-
-
-<!--<button class="m-2" mat-raised-button color="primary" (click)="rxIntervalSubscribe()">Interval subscribe</button>
-<button class="m-2" mat-raised-button color="primary" (click)="rxIntervalUnsubscribe()">Interval unsubscribe</button>
-
-<button class="m-2" mat-raised-button color="warn" (click)="rxFrom1()">From</button>
-<button class="m-2" mat-raised-button color="warn" (click)="rxFrom2()">From</button>-->
+</div>

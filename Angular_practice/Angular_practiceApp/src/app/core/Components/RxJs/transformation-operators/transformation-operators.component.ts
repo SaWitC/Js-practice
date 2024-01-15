@@ -1,7 +1,11 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
-import { Observable, observable, of, map, from, mapTo, pluck, scan, expand, mergeMap, interval, buffer, fromEvent, takeUntil } from 'rxjs';
+import { Observable, observable, of, map, from, mapTo, pluck, scan, expand, mergeMap, interval, buffer, fromEvent, takeUntil, Subject, Subscription, concatMap, take, switchMap, exhaustMap } from 'rxjs';
+import { EventData } from 'src/app/core/models/EventsModel';
+import { SubscriptionData } from 'src/app/core/models/SubscriptionData.model';
+import { EventsService } from 'src/app/core/services/events-service.service';
+import { SubscriptionsServiceService } from 'src/app/core/services/subscriptions-service.service';
 
 @Component({
   selector: 'app-transformation-operators',
@@ -10,81 +14,124 @@ import { Observable, observable, of, map, from, mapTo, pluck, scan, expand, merg
 })
 export class TransformationOperatorsComponent implements OnDestroy {
 
-  constructor(private toastr: ToastrService) {
+  private destroy$ = new Subject<void>()
+
+  constructor(public subscriptionsServiceService:SubscriptionsServiceService,public eventsService:EventsService,private toastr: ToastrService) {
   }
-    ngOnDestroy(): void {
-        throw new Error('Method not implemented.');
-    }
+
+  private readonly page ="transformation-operators";
+  ngOnDestroy(): void {
+    this.eventsService.log(new EventData("orange","ngOnDestroy",""))
+    //extra code that is used only to display how it works
+    this.toastr.warning("onDestroy")
+    this.destroy$.asObservable().subscribe(x=>{
+      this.subscriptionsServiceService.removeSubscriptionByPage(this.page)
+    })
+
+    //main destroy code
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   @Output() onMsgClicked = new EventEmitter<any>();
 
-  rxMap1() {
+  public codeMap=`
+  const subscrib = of(1, 2, 3, 4, 5)
+  .pipe(takeUntil(this.destroy$), map((x) => x * 2) )`
+
+  public codeMapTo=`
+  const subscrib = of(1, 2, 3, 4, 5)
+  .pipe(takeUntil(this.destroy$),concatMap((x) =>('a')))`
+
+  public codeMergeMap=`
+  const subscrib = of(2, 1)
+  .pipe(takeUntil(this.destroy$),mergeMap(x=>interval(1000).pipe(take(x))))`
+
+  public codeConcatMap=`
+  const subscrib = of(2, 1)
+  .pipe(takeUntil(this.destroy$),concatMap(x=>interval(1000).pipe(take(x))))`
+
+  public codeExausteMap=`
+  const subscrib = of(2, 1)
+  .pipe(takeUntil(this.destroy$),exaustMap(x=>interval(1000).pipe(take(x))))`
+
+  public codeSwitchMap=`
+  const subscrib = of(2, 1)
+  .pipe(takeUntil(this.destroy$),switchMap(x=>interval(1000).pipe(take(x))))`
+
+  rxJsMap() {
+    this.eventsService.log(new EventData("blue","Add subscription",""))
 
     this.onMsgClicked.emit("of(1, 2, 3, 4, 5).pipe(map((x) => x * 2))");
-    const observ$ = of(1, 2, 3, 4, 5).pipe(untilDestroyed(this), map((x) => x * 2)).subscribe(
+    const subscrib = of(1, 2, 3, 4, 5).pipe(takeUntil(this.destroy$),map((x) => x * 2)).subscribe(
       res => this.toastr.info("observer got value " + res, "info"),
       err => this.toastr.error(err),
       () => { this.toastr.success("complete"); }
     )
+    this.subscriptionsServiceService.addSubscription(new SubscriptionData("of with map",subscrib,this.page))
   }
 
-  rxMap2() {
-    this.onMsgClicked.emit(' from(["hELlo", "wOrLd", "MyWoRld"]).pipe(map((x: string) => x.toLowerCase()))');
+  rxJsMapTo() {
+    this.eventsService.log(new EventData("blue","Add subscription",""))
 
-    const observ$ = from(["hELlo", "wOrLd", "MyWoRld"]).pipe(untilDestroyed(this) ,map((x: string) => x.toLowerCase())).subscribe(
+    this.onMsgClicked.emit("of(1, 2, 3, 4, 5).pipe(map((x) => x * 2))");
+    const subscrib = of(1, 2, 3, 4, 5).pipe(takeUntil(this.destroy$),mapTo('a')).subscribe(
       res => this.toastr.info("observer got value " + res, "info"),
       err => this.toastr.error(err),
       () => { this.toastr.success("complete"); }
     )
+    this.subscriptionsServiceService.addSubscription(new SubscriptionData("of with map",subscrib,this.page))
   }
 
-  rxMapTo1() {
-    this.onMsgClicked.emit('from(["hELlo", "wOrLd", "MyWoRld"]).pipe(mapTo("new value"))');
+  rxJsConcatMap() {
+    this.eventsService.log(new EventData("blue","Add subscription",""))
 
-    const observ$ = from(["hELlo", "wOrLd", "MyWoRld"]).pipe(untilDestroyed(this),mapTo("new value")).subscribe(
+    this.onMsgClicked.emit("of(1, 2, 3, 4, 5).pipe(map((x) => x * 2))");
+    const subscrib = of(2, 1).pipe(takeUntil(this.destroy$),concatMap(x=>interval(1000).pipe(take(x)))).subscribe(
       res => this.toastr.info("observer got value " + res, "info"),
       err => this.toastr.error(err),
       () => { this.toastr.success("complete"); }
     )
+    this.subscriptionsServiceService.addSubscription(new SubscriptionData("of with map",subscrib,this.page))
   }
 
-  rxPluck() {
-    this.onMsgClicked.emit('from(["hELlo", "world", "MyWoRld"]).pipe(pluck("world","new world"))');
+  rxJsSwirtchMap() {
+    this.eventsService.log(new EventData("blue","Add subscription",""))
 
-    const observ$ = from(["hELlo", "world", "MyWoRld"]).pipe(untilDestroyed(this) ,pluck("world", "new world")).subscribe(
+    this.onMsgClicked.emit("of(1, 2, 3, 4, 5).pipe(map((x) => x * 2))");
+    const subscrib = of(2, 1).pipe(takeUntil(this.destroy$),switchMap(x=>interval(1000).pipe(take(x)))).subscribe(
       res => this.toastr.info("observer got value " + res, "info"),
       err => this.toastr.error(err),
       () => { this.toastr.success("complete"); }
     )
+    this.subscriptionsServiceService.addSubscription(new SubscriptionData("of with map",subscrib,this.page))
   }
 
-  rxScan() {
-    this.onMsgClicked.emit('from([1, 2, 3, 4, 5, 6]).pipe(scan((total, i) => total+=i))');
+  rxJsExaustMap() {
+    this.eventsService.log(new EventData("blue","Add subscription",""))
 
-    const observ$ = from([1, 2, 3, 4, 5, 6]).pipe(untilDestroyed(this) ,scan((total, i) => total += i)).subscribe(
+    this.onMsgClicked.emit("of(1, 2, 3, 4, 5).pipe(map((x) => x * 2))");
+    const subscrib = of(2, 1).pipe(takeUntil(this.destroy$),exhaustMap(x=>interval(1000).pipe(take(x)))).subscribe(
       res => this.toastr.info("observer got value " + res, "info"),
       err => this.toastr.error(err),
       () => { this.toastr.success("complete"); }
     )
+    this.subscriptionsServiceService.addSubscription(new SubscriptionData("of with map",subscrib,this.page))
   }
 
-  ClickEvent$ = fromEvent(document, "click");
-  rxBuffer() {
-    const buffered = interval(1000).pipe(untilDestroyed(this) ,buffer(this.ClickEvent$)).subscribe(
-      res => {
-        if (res)
-          this.toastr.info("observer got value " + res, "info")
-      },
+  rxJsMergeMap() {
+    this.eventsService.log(new EventData("blue","Add subscription",""))
+
+    this.onMsgClicked.emit("of(1, 2, 3, 4, 5).pipe(map((x) => x * 2))");
+    const subscrib = of(2, 1).pipe(takeUntil(this.destroy$),mergeMap(x=>interval(1000).pipe(take(x)))).subscribe(
+      res => this.toastr.info("observer got value " + res, "info"),
       err => this.toastr.error(err),
-      () => {this.toastr.success("complete");}
-    );
-    setTimeout(() => {
-      buffered.unsubscribe()
-      this.toastr.success("end");
-    },10000)
+      () => { this.toastr.success("complete"); }
+    )
+    this.subscriptionsServiceService.addSubscription(new SubscriptionData("of with map",subscrib,this.page))
   }
 }
 
-  
+
 
 
