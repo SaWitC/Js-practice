@@ -4,8 +4,9 @@
   <div class="col"><hr class="solid-white"></div>
 </div>
 
-<div class="d-grid">
+<button>map operators</button>
 
+<div class="d-grid">
   <div class="border m-2">
     <div>
       <button class="m-2" (click)="rxJsMap()" mat-raised-button color="warn">map</button>
@@ -54,7 +55,7 @@
 
   <div class="border m-2">
     <div>
-      <button class="m-2" (click)="rxJsSwirtchMap()" mat-raised-button color="warn">switchMap</button>
+      <button class="m-2" (click)="rxJsSwitchMap()" mat-raised-button color="warn">switchMap</button>
   </div>
     <div class="text-white p-2">
       Returns an Observable that emits items based on applying a function that you supply to each item emitted by the source Observable, where that function returns an (so-called "inner") Observable. Each new inner Observable is concatenated with the previous inner Observable.
@@ -96,5 +97,4 @@
       </pre>
     </div>
   </div>
-
 </div>
